@@ -14,7 +14,7 @@ if (isset($_POST['btnSub1'])) {
     $pairs = array_chunk($lines, 2);
     foreach ($pairs as $pair) {
       list($key, $value) = $pair;
-      $output .= trim($key . ', ' . $value) . "\n";
+      $output .= trim($key . ' ' . $value) . "\n";
     }
   } else {
     $parts =  explode('-', $_POST['input']);
@@ -23,8 +23,6 @@ if (isset($_POST['btnSub1'])) {
       return str_replace(",", '.', trim($item));
     }, $line_Xs);
 
-    print_r($line_Xs);
-
     $line_Ys = explode("\n", trim($parts[1]));
     $line_Ys = array_map(function ($item) {
       return str_replace(",", '.', trim($item));
@@ -32,7 +30,7 @@ if (isset($_POST['btnSub1'])) {
 
     $i = 0;
     foreach ($line_Xs as $linex) {
-      $output .= trim($linex . ', ' . $line_Ys[$i]) . "\n";
+      $output .= trim($linex . ' ' . $line_Ys[$i]) . "\n";
       $i++;
     }
   }
