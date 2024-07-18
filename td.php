@@ -54,7 +54,7 @@ if (isset($_POST['btnSub2'])) {
 
   $new_input = [];
   foreach ($lines as $line) {
-    $parts =  explode(",", $line);
+    $parts =  explode(" ", $line);
     $parts = array_map(function ($item) {
       return trim($item);
     }, $parts);
