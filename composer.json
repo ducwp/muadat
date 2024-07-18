@@ -1,0 +1,13 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Muda\\": "src/"
+    }
+  },
+  "config": {
+    "platform-check": false
+  },
+  "require": {
+    "nette/database": "^3.2"
+  }
+}
