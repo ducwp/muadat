@@ -12,27 +12,32 @@ if (isset($_POST['btnSub1'])) {
     }, $lines);
 
     $pairs = array_chunk($lines, 2);
-    
+    foreach ($pairs as $pair) {
+      list($key, $value) = $pair;
+      $output .= trim($key . ', ' . $value) . "\n";
+    }
   } else {
     $parts =  explode('-', $_POST['input']);
-    $line_Xs = explode("\n", $parts[0]);
+    $line_Xs = explode("\n", trim($parts[0]));
     $line_Xs = array_map(function ($item) {
       return str_replace(",", '.', trim($item));
     }, $line_Xs);
-    $line_Ys = explode("\n", $parts[1]);
+
+    print_r($line_Xs);
+
+    $line_Ys = explode("\n", trim($parts[1]));
     $line_Ys = array_map(function ($item) {
       return str_replace(",", '.', trim($item));
     }, $line_Ys);
 
-    $pairs =  array_combine($line_Xs, $line_Ys);
+    $i = 0;
+    foreach ($line_Xs as $linex) {
+      $output .= trim($linex . ', ' . $line_Ys[$i]) . "\n";
+      $i++;
+    }
   }
 
-  $assoc = array();
-  foreach ($pairs as $pair) {
-    list($key, $value) = $pair;
-    $assoc[$key] = $value;
-    $output .= trim($key . ', ' . $value) . "\n";
-  }
+
   $output = trim($output);
 
   $input = isset($_POST['input']) ? trim($_POST['input']) : $input;
